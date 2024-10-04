@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome')->name('home');
+
+// CRUD de Productos
+Route::resource('productos', ProductoController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
