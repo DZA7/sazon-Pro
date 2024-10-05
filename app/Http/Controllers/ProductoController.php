@@ -11,7 +11,7 @@ class ProductoController extends Controller
     {
         // Obtener todos los productos
         $productos = Producto::all();
-        
+
         // Retornar la vista index con los productos
         return view('productos.index', compact('productos'));
     }
@@ -32,8 +32,8 @@ class ProductoController extends Controller
             'stock' => 'required|integer|min:0',
         ]);
 
-        // Crear un nuevo producto, excluyendo el token de la solicitud
-        Producto::create($request->except('_token'));
+        // Crear un nuevo producto
+        Producto::create($request->all());
 
         // Redirigir al índice de productos con un mensaje de éxito
         return redirect()->route('productos.index')->with('success', 'Producto creado con éxito.');
@@ -49,7 +49,7 @@ class ProductoController extends Controller
     {
         // Buscar el producto por su ID
         $producto = Producto::findOrFail($id);
-        
+
         // Retornar la vista de edición de productos con los datos del producto
         return view('productos.edit', compact('producto'));
     }
@@ -68,7 +68,7 @@ class ProductoController extends Controller
         $producto = Producto::findOrFail($id);
 
         // Actualizar los datos del producto
-        $producto->update($request->except('_token'));
+        $producto->update($request->all());
 
         // Redirigir al índice de productos con un mensaje de éxito
         return redirect()->route('productos.index')->with('success', 'Producto actualizado con éxito.');
@@ -78,10 +78,10 @@ class ProductoController extends Controller
     {
         // Encuentra el producto por su ID
         $producto = Producto::findOrFail($id);
-        
+
         // Elimina el producto
         $producto->delete();
-        
+
         // Redirige a la lista de productos con un mensaje de éxito
         return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente.');
     }

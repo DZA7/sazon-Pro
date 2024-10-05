@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('titulo', 'Consultar productos')
 @section('contenido')
 <div class="hero min-h-screen w-full bg-cover bg-center" 
     style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">

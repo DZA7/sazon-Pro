@@ -7,16 +7,16 @@ use Illuminate\View\View;
 
 class AppLayout extends Component
 {
-    public $header;
+    public string $header;
 
     /**
      * Create a new component instance.
      *
      * @param string|null $header
      */
-    public function __construct($header = null)
+    public function __construct(?string $header = null)
     {
-        $this->header = $header;
+        $this->header = $header ?? 'Default Header'; // Puedes establecer un valor predeterminado
     }
 
     /**
