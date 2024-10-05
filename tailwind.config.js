@@ -22,6 +22,6 @@ export default {
 
     plugins: [
         forms,
-        // Puedes agregar más plugins aquí si es necesario
-    ],
+        require('daisyui'),
+    ],    
 };
