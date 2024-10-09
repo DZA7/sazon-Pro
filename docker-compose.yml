@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .  # Usa el Dockerfile en la raíz del proyecto
+    ports:
+      - "8000:8000"  # Mapea el puerto 8000 del contenedor al 8000 de tu máquina
+    volumes:
+      - .:/var/www/html  # Mapea el directorio actual al contenedor
+    depends_on:
+      - db  # Asegura que la base de datos esté lista antes de iniciar la aplicación
+
+  db:
+    image: php:8.2-fpm  # Usa la imagen de PHP 8.2 FPM
+    volumes:
+      - dbdata:/var/lib/sqlite  # Persistencia de datos para SQLite
+
+volumes:
+  dbdata:  # Volumen para almacenar datos de la base de datos

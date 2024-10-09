@@ -32,7 +32,7 @@
             </ul>
         </div>
     </div>
-
+    
     {{-- Menú de usuario --}}
     @auth
         <h3 class="mr-4 font-semibold">Hola, {{ auth()->user()->name }}</h3>
